@@ -111,7 +111,7 @@ export function transformStreamWithRouter(
   }
 
   function decodeChunk(chunk: unknown): string {
-    if (chunk instanceof Uint8Array) {
+    if (ArrayBuffer.isView(chunk)) {
       return textDecoder.decode(chunk)
     }
     return String(chunk)
